@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
+import Tile from "./Tile";
 
 const Shop = () => {
   const [cats, setCats] = useState([]);
   const [prods, setProds] = useState([]);
-  const [pgNo, setPgNo] = useState([1]);
+  const [pgNo, setPgNo] = useState(1);
   
-  const nextPage = () => setPgNo((pgNo) => {pgNo + 1})
-  const prevPage = () => setPgNo((pgNo) => {pgNo - 1})
+  const nextPage = () => setPgNo((pgNo) => pgNo + 1)
+  const prevPage = () => setPgNo((pgNo) => pgNo - 1)
   
   useEffect(() => {
     fetch("https://dummyjson.com/products/categories")
@@ -26,7 +27,7 @@ const Shop = () => {
 
   return (
     <>
-      <div>
+      <aside>
         <h4>Categories</h4>
         <ul>
           {cats.map((cat, idx) => (
@@ -35,16 +36,12 @@ const Shop = () => {
             </li>
           ))}
         </ul>
-      </div>
-      <div>
-        <ul>
-          {prods.map((prod, idx) => (
-            <li key={idx}>
-              <Link to={`shop/products/${prod.id}`}>{prod.title}</Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      </aside>
+      <main>
+        {prods && prods.map((prod, idx) => (
+          <Tile key={idx} prod={prod}/>
+        ))}
+      </main>
       {pgNo > 1 && (
         <button
           onClick={prevPage}
