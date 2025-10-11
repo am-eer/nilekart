@@ -6,9 +6,9 @@ const Navbar = () => {
   
   return (
     <nav>
-      {location.pathname === "/" ? (<b><Link to="/">Home</Link></b>) : (<Link to="/">Home</Link>)}
-      {location.pathname.startsWith("/shop") ? (<b><Link to="shop">Shop</Link></b>) : (<Link to="shop">Shop</Link>)}
-      {location.pathname === "/cart" ? (<b><Link to="cart">Cart</Link></b>) : (<Link to="cart">Cart</Link>)}
+      <Link to="/" className={location.pathname === "/" ? "selected-nav-tab" : ""}>Home</Link>
+      <Link to="/shop" className={location.pathname.startsWith("/shop") ? "selected-nav-tab" : ""}>Shop</Link>
+      <Link to="/cart" className={location.pathname === "/cart" ? "selected-nav-tab" : ""}>Cart</Link>
     </nav>
   );
 };

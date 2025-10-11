@@ -1,0 +1,145 @@
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  width: 90%;
+  margin-inline: auto;
+}
+
+.tile {
+  height: 100%;
+  text-align: center;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s ease-in-out, background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.tile img {
+  height: 15rem;
+  width: 15rem;
+}
+
+.tile:hover {
+  box-shadow: var(--hover-shadow);
+}
+
+.tile:active {
+  box-shadow: inset 1px 1px 3px gray;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.disable {
+  pointer-events: none;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+nav a {
+  font-size: 1.25rem;
+}
+
+.selected-nav-tab {
+  font-weight: bold;
+}
+
+button {
+  cursor: pointer;
+  padding: 0.7rem 1.2rem;
+  border-radius: 999px;
+  transition: 0.15s ease-in-out;
+}
+
+.category-showcase:not(:first-of-type) {
+  margin-top: 4rem;
+}
+
+.product-showcase-box {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  width: 80%;
+  margin-inline: auto;
+  align-items: center;
+}
+
+.product-showcase {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  flex-grow: 1;
+}
+
+.category-btn {
+  color: hsl(0, 0%, 30%);
+  padding: 0.5rem;
+  /* border-radius: 1.2rem; */
+  padding-block: 60%;
+  border: none;
+  box-shadow: var(--shadow);
+  background-color: white;
+}
+
+.category-btn:hover {
+  box-shadow: var(--hover-shadow);
+}
+
+.category-btn:active {
+  box-shadow: inset 1px 1px 3px gray;
+}
+
+.center {
+  text-align: center;
+}
+
+.page-btns {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.shop {
+  display: flex;
+  gap: 2rem;
+}
+
+.aside-heading {
+  margin-left: 3rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.category-card {
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.category-card:hover {
+  box-shadow: var(--shadow);
+}
+
+.category-card:active {
+  box-shadow: var(--shadow);
+}
+
+.shop-main {
+  flex: 1;
+  padding-bottom: 1.5rem;
+}
+
+.shop-main-heading {
+  text-align: center;
+  margin-bottom: 2rem;
+}

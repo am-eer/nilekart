@@ -1,60 +1,39 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router";
-import Tile from "./Tile";
+import { Link, Outlet, useLocation } from "react-router";
+import { getCategories } from "../lib/requests";
 
 const Shop = () => {
-  const [cats, setCats] = useState([]);
-  const [prods, setProds] = useState([]);
-  const [pgNo, setPgNo] = useState(1);
-  
-  const nextPage = () => setPgNo((pgNo) => pgNo + 1)
-  const prevPage = () => setPgNo((pgNo) => pgNo - 1)
-  
+  const [categories, setCategories] = useState([]);
+  const location = useLocation();
+
   useEffect(() => {
-    fetch("https://dummyjson.com/products/categories")
-      .then((data) => data.json())
-      .then((array) => setCats(array));
+    getCategories().then((fetchedCategories) => {
+      if (fetchedCategories != null) setCategories(fetchedCategories);
+    });
   }, []);
-  useEffect(() => {
-    fetch(
-      `https://dummyjson.com/products?limit=12&skip=${
-        12 * (pgNo - 1)
-      }&select=title,price,discountPercentage,rating,stock,thumbnail`
-    )
-      .then((data) => data.json())
-      .then((array) => setProds(array.products));
-  }, [pgNo]);
 
   return (
-    <>
-      <aside>
-        <h4>Categories</h4>
-        <ul>
-          {cats.map((cat, idx) => (
-            <li key={idx}>
-              <Link to={`shop/categories/${cat.slug}`}>{cat.name}</Link>
-            </li>
-          ))}
-        </ul>
-      </aside>
-      <main>
-        {prods && prods.map((prod, idx) => (
-          <Tile key={idx} prod={prod}/>
-        ))}
-      </main>
-      {pgNo > 1 && (
-        <button
-          onClick={prevPage}
-        >
-          Prev Page
-        </button>
-      )}
-      <button
-        onClick={nextPage}
-      >
-        Next Page
-      </button>
-    </>
+    <div className="shop">
+      {
+        location.pathname !== "/shop" && (
+          <aside className="shop-aside">
+            <h2 className="aside-heading">Categories</h2>
+            <ul>
+              {categories.map((category, idx) => (
+                <li key={idx}>
+                  <Link to={`/shop/categories/${category.slug}/1`}>
+                    <div className="category-card">
+                      {category.name}
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        )
+      }
+      <Outlet />
+    </div>
   );
 };
 

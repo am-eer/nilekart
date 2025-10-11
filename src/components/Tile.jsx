@@ -1,25 +1,25 @@
-const Tile = ({ prod }) => {
+const Tile = ({ product }) => {
   return (
-    <div>
-      <img src={prod.thumbnail} alt="Product Image" />
-      <p>{prod.title}</p>
-      <span>{prod.rating}⭐</span>
-      {prod.discountPercentage ? (
+    <div className="tile">
+      <img src={product.thumbnail} alt="Product Image" />
+      <p>{product.title}</p>
+      <span>{product.rating}⭐</span>
+      {product.discountPercentage ? (
         <>
-          <h4>
-            <s>${prod.price}</s>
-          </h4>
-          <h3>
-            ${Math.trunc(prod.price * (100 - prod.discountPercentage)) / 100}
-          </h3>
+          <p>
+            <s>${product.price}</s>
+          </p>
+          <p>
+            ${Math.trunc(product.price * (100 - product.discountPercentage)) / 100}
+          </p>
         </>
       ) : (
-        <h3>${Math.trunc(prod.price * 100) / 100}</h3>
+        <p>${Math.trunc(product.price * 100) / 100}</p>
       )}
-      {prod.stock ? (
-        prod.stock < 10 && <h4>Only {prod.stock} units left. Hurry up!</h4>
+      {product.stock ? (
+        product.stock < 10 && <p>Only {product.stock} units left. Hurry up!</p>
       ) : (
-        <h4>Out of Stock</h4>
+        <p>Out of Stock</p>
       )}
     </div>
   );
