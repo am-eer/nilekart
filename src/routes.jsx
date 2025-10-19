@@ -22,6 +22,7 @@ const routes = [
         children: [
           { index: true, element: <ShopIndex /> },
           { path: "categories/:category/:pg", element: <Category /> },
+          { path: "search/:query/:pg", element: <Category /> },
           { path: "product/:productId", element: <Product /> },
         ]
       },

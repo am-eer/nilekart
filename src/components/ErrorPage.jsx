@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 const ErrorPage = () => {
   return (
-    <p>Oh no! Something went wrong!<Link to="/"> Click here </Link> to go back to home page.</p>
+    <p style={{ margin: "1rem" }}>Oh no! Something went wrong! Click <Link to="/" style={{ fontWeight: "700" }}>here</Link> to go back to home page.</p>
   );
 };
 

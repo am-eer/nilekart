@@ -4,6 +4,10 @@ export const extractPageNumber = (pgNoStr) => {
   return pgNo;
 }
 
-export const capitalizeFirstLetter = (word) => {
-  return word[0].toUpperCase() + word.slice(1);
+export const formatCategory = (originalWord) => {
+  let result = '';
+  for(const word of originalWord.split("-")) {
+    result += word[0].toUpperCase() + word.slice(1);
+  }
+  return result;
 }

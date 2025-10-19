@@ -39,17 +39,40 @@ a {
 
 nav {
   display: flex;
-  gap: 1rem;
+  /* gap: 1rem; */
+  justify-content: space-around;
   padding: 1.5rem;
   margin-bottom: 1rem;
 }
 
 nav a {
+  position: relative;
   font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  border-radius: 9999px;
+  background-color: hsl(0 0 15%);
+  transition: width 0.25s ease-in-out;
+}
+
+nav a:not(.selected-nav-tab):hover::after {
+  width: 100%;
 }
 
 .selected-nav-tab {
   font-weight: bold;
+}
+
+input {
+  border-radius: 999px;
 }
 
 button {
@@ -57,6 +80,33 @@ button {
   padding: 0.7rem 1.2rem;
   border-radius: 999px;
   transition: 0.15s ease-in-out;
+}
+
+.wipe-btn {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  transition: color 0.25s ease-in-out;
+}
+
+.wipe-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: hsl(0 0 5%);
+  z-index: -1;
+  transition: width 0.25s ease-in-out;
+}
+
+.wipe-btn:hover::before {
+  width: 100%;
+}
+
+.wipe-btn:hover {
+  color: hsl(0 0 90%);
 }
 
 .category-showcase:not(:first-of-type) {
@@ -123,7 +173,7 @@ ul {
 
 .category-card {
   padding: 1rem;
-  border-radius: 1rem;
+  border-radius: 0.75rem;
 }
 
 .category-card:hover {
@@ -142,4 +192,14 @@ ul {
 .shop-main-heading {
   text-align: center;
   margin-bottom: 2rem;
+}
+
+.product {
+  display: flex;
+}
+
+.product img {
+  max-width: 60%;
+  height: auto;
+  object-fit: contain;
 }
