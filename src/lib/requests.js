@@ -27,14 +27,14 @@ export const getShowcase = async (setShowcase) => {
         products: payload.products,
       });
       if (showcase.length === 3) {
-        setShowcase(showcase);
+        setShowcase(() => [...showcase]);
       }
     } catch (err) {
       console.error("Failed to get showcase", err);
       return;
     }
   }
-  setShowcase(showcase);
+  setShowcase(() => [...showcase]);
 };
 
 export const getProducts = async (pgNo, category) => {
