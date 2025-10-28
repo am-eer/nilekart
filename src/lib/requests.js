@@ -11,6 +11,17 @@ export const getCategories = async () => {
   }
 };
 
+export const getCategoryCount = async () => {
+  try {
+    const response = await fetch(`${API_PREFIX}/category-list`);
+    const payload = await response.json();
+    return payload.length;
+  } catch (err) {
+    console.error("Failed to get category count", err);
+    return null;
+  }
+};
+
 export const getShowcase = async (setShowcase) => {
   const categories = await getCategories();
   if (categories == null) return;
@@ -59,6 +70,17 @@ export const getFullProduct = async (productId) => {
     return payload;
   } catch (err) {
     console.error("Failed to get data for tiles", err);
+    return null;
+  }
+};
+
+export const getProductCount = async () => {
+  try {
+    const response = await fetch(`${API_PREFIX}?limit=1&select=id`);
+    const payload = await response.json();
+    return payload.total;
+  } catch (err) {
+    console.error("Failed to get product count", err);
     return null;
   }
 };

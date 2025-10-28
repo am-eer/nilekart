@@ -41,10 +41,10 @@ const Category = () => {
       </div>
       <div className="page-btns">
         <Link className={pgNo < 2 ? "disable" : ""} to={query ? `../search/${query}/${pgNo - 1}` :`../categories/${category}/${pgNo - 1}`}>
-          <button disabled={pgNo < 2} className="wipe-btn">Prev Page</button>
+          <button disabled={pgNo < 2} className="dark-btn">Prev Page</button>
         </Link>
         <Link className={pgNo * 12 < total ? "" : "disable"} to={query ? `../search/${query}/${pgNo + 1}` : `../categories/${category}/${pgNo + 1}`}>
-          <button disabled={pgNo * 12 >= total} className="wipe-btn" >Next Page</button>
+          <button disabled={pgNo * 12 >= total} className="dark-btn" >Next Page</button>
         </Link>
       </div>
     </main>
