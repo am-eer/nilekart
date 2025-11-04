@@ -1,3 +1,7 @@
+.home {
+  text-align: center;
+}
+
 .tile-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -28,6 +32,22 @@
   box-shadow: inset 1px 1px 3px gray;
 }
 
+.tile .tile-title {
+  font-size: 1rem;
+  font-weight: bold;
+  padding-inline: 0.75rem;
+}
+
+.tile .tile-striked-price {
+  color: hsl(0 0 40%);
+}
+
+.tile .tile-stock-msg {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: hsl(0, 100%, 60%);
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -39,8 +59,9 @@ a {
 
 .highlight-container {
   display: flex;
-  justify-content: space-between;
-  margin-block: 5rem;
+  gap: 5rem;
+  width: fit-content;
+  margin: 5rem auto;
 }
 
 .highlight-big {
@@ -56,11 +77,14 @@ a {
 
 nav {
   display: flex;
+  position: sticky;
+  top: 0;
   gap: 1rem;
   justify-content: space-around;
   align-items: center;
-  padding: 1.5rem 0.5rem 0.5rem;
-  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: white;
+  box-shadow: 0 4px 8px #00000015;
 }
 
 nav a {
@@ -89,6 +113,23 @@ nav a:not(.selected-nav-tab):hover::after {
   font-weight: bold;
 }
 
+.cart-link {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.cart-link .cart-size {
+  line-height: 0;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background-color: hsl(0, 0%, 5%);
+  color: hsl(0 0 95%);
+  display: grid;
+  place-items: center;
+}
+
 form {
   display: flex;
   width: 50%;
@@ -105,10 +146,43 @@ input:not(:focus-visible) {
   border-right: none;
 }
 
+input:focus {
+  outline: none;
+  border: 3px solid hsl(0 0 5%);
+  border-right: none;
+}
+
 form button {
   border-radius: 0 var(--infinite) var(--infinite) 0;
   display: grid;
   place-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-family: "Pacifico", cursive;
+  font-size: 2rem;
+  user-select: none;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-top: auto;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  box-shadow: 0 -1px #00000025;
+}
+
+footer a {
+  display: flex;
+  align-items: center;
+}
+
+footer svg {
+  height: 1rem;
 }
 
 button {
@@ -132,6 +206,11 @@ button {
 
 .dark-btn:disabled {
   background-color: hsl(0 0 25%);
+}
+
+.large-btn {
+  font-size: 1.5rem;
+  padding: 1.25rem 2.75rem;
 }
 
 .wipe-btn {
@@ -213,19 +292,32 @@ button {
 .shop {
   display: flex;
   gap: 2rem;
+  align-items: flex-start;
+  padding-bottom: 5rem;
+}
+
+.shop-aside {
+  padding: 1rem;
 }
 
 .aside-heading {
-  margin-left: 3rem;
+  margin: 0;
+  padding-left: 1.5rem;
+  /* text-align: center; */
 }
 
 ul {
   list-style-type: none;
 }
 
+.shop ul {
+  padding: 0;
+}
+
 .category-card {
-  padding: 1rem;
-  border-radius: 0.75rem;
+  padding: 1rem 1.5rem;
+  border-radius: var(--infinite);
+  transition: 0.1s ease-in-out;
 }
 
 .category-card:hover {
@@ -233,7 +325,7 @@ ul {
 }
 
 .category-card:active {
-  box-shadow: var(--shadow);
+  box-shadow: inset 1px 1px 3px gray;
 }
 
 .shop-main {
@@ -246,12 +338,60 @@ ul {
   margin-bottom: 2rem;
 }
 
+.shop-main .tile {
+  padding: 1rem 0.25rem;
+}
+
 .product {
   display: flex;
+  gap: 4rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+}
+
+.carousel button {
+  padding: 1.25rem 0.5rem;
+}
+
+.carousel svg {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.rotate {
+  rotate: 180deg;
 }
 
 .product img {
-  max-width: 60%;
+  width: 25rem;
   height: auto;
   object-fit: contain;
+}
+
+.buy-buttons {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr / 1fr;
+  grid-auto-flow: column;
+}
+
+.product button:disabled {
+	color: hsl(0 0 95%);
+}
+
+.product .product-info {
+  padding-right: 2rem;
+}
+
+.product th {
+  text-align: left;
+}
+
+table {
+  width: 100%;
 }

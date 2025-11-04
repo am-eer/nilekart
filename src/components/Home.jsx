@@ -20,7 +20,7 @@ const Home = () => {
   }, [])
 
   return (
-    <div style={{position: "fixed", top: "50%", left: "50%", translate: "-50% -50%"}}>
+    <main className="home">
       <p style={{fontSize: "3rem", textAlign: "center"}}>Welcome to NileKart</p>
       <div className="highlight-container">
         <div className="highlight">
@@ -32,8 +32,8 @@ const Home = () => {
           <p className="highlight-small">Categories</p>
         </div>
       </div>
-      <Link to="shop"><button className="dark-btn" style={{display: "block", fontSize: "1.5rem", marginInline: "auto", padding: "1.5rem 3rem"}}>Start Shopping</button></Link>
-    </div>
+      <Link to="shop"><button className="dark-btn large-btn">Start Shopping</button></Link>
+    </main>
   );
 };
 

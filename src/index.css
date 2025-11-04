@@ -1,21 +1,32 @@
 :root {
   --shadow: inset 0 1px 2px #ffffff50, 0 -1px #00000010, 0 1px 2px #00000030, 0 4px 8px #00000015;
   --hover-shadow: inset 0 1px 2px #ffffff50, 0 -1px #00000010, 0 1px 3px #00000037, 0 4px 12px #00000020;
-  --infinite: 999px
+  --infinite: 999px;
 }
 
 * {
   box-sizing: border-box;
 }
 
-html, body {
+html, body, #root {
   margin: 0;
   padding: 0;
+  height: 100%;
+}
+
+html {
+  overflow: overlay;
+  scrollbar-gutter: stable;
 }
 
 body {
   font-family: Inter, Helvetica, sans-serif;
   font-optical-sizing: auto;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
 }
 
 button, ul, li {
