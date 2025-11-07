@@ -13,3 +13,19 @@ export const formatCategory = (originalWord) => {
   }
   return result;
 }
+
+export const formatDate = (unformattedDate) => {
+  const date = new Date(unformattedDate);
+  const day = date.getDate();
+  let suffix;
+  if (day > 3 && day < 21) suffix = 'th';
+  switch (day % 10) {
+    case 1: suffix = 'st';
+    case 2: suffix = 'nd';
+    case 3: suffix = 'rd';
+    default: suffix = 'th';
+  }
+  const month = new Intl.DateTimeFormat('en-GB', { month: 'long' }).format(date);
+  const year = date.getFullYear();
+  return `${day}${suffix} ${month} ${year}`;
+}

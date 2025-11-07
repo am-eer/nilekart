@@ -21,18 +21,29 @@ const Home = () => {
 
   return (
     <main className="home">
-      <p style={{fontSize: "3rem", textAlign: "center"}}>Welcome to NileKart</p>
-      <div className="highlight-container">
-        <div className="highlight">
-          <p className="highlight-big">{productCount}</p>
-          <p className="highlight-small">Products</p>
+      <section className="home-section">
+        <h1 className="welcome">Welcome to NileKart</h1>
+        <div className="highlight-container">
+          <div className="highlight">
+            <p className="highlight-big">{productCount}</p>
+            <p className="highlight-small">Products</p>
+          </div>
+          <div className="highlight">
+            <p className="highlight-big">{categoryCount}</p>
+            <p className="highlight-small">Categories</p>
+          </div>
         </div>
-        <div className="highlight">
-          <p className="highlight-big">{categoryCount}</p>
-          <p className="highlight-small">Categories</p>
-        </div>
-      </div>
-      <Link to="shop"><button className="dark-btn large-btn">Start Shopping</button></Link>
+        <Link to="shop"><button className="dark-btn large-btn">Start Shopping</button></Link>
+      </section>
+      {/* <section className="home-section dummy">
+        <span>Stats</span>
+      </section>
+      <section className="home-section dummy">
+        <span>Testimonials</span>
+      </section>
+      <section className="home-section dummy">
+        <span>Newsletter</span>
+      </section> */}
     </main>
   );
 };

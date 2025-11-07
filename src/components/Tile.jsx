@@ -1,9 +1,11 @@
+import Stars from "./Stars";
+
 const Tile = ({ product }) => {
   return (
     <div className="tile">
       <img src={product.thumbnail} alt="Product Image" />
       <p className="tile-title">{product.title}</p>
-      <span className="tile-rating">{product.rating}⭐</span>
+      <Stars rating={product.rating} />
       {product.discountPercentage ? (
         <>
           <p className="tile-price">
