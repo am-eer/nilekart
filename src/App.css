@@ -27,12 +27,21 @@
   margin-inline: auto;
 }
 
+.tile-grid .empty-msg {
+  grid-column: 1/-1;
+  text-align: center;
+  max-width: 100%;
+  color: hsl(0 0 60%);
+  font-weight: 400;
+}
+
 .tile {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   height: 28rem;
   text-align: center;
+  align-items: center;
   padding: 1.25rem;
   border-radius: 1rem;
   box-shadow: var(--shadow);
@@ -224,6 +233,18 @@ button {
   transition: 0.15s ease-in-out;
 }
 
+.light-btn {
+  border: 2px solid hsl(0 0 5%);
+  background-color: hsl(0 0 98%);
+  color: hsl(0 0 5%);
+}
+
+.light-btn:hover {
+  background-color: hsl(0 0 30%);
+  color: hsl(0 0 100%);
+  border: 2px solid transparent;
+}
+
 .dark-btn {
   border: 2px solid hsl(0 0 5%);
   background-color: hsl(0 0 5%);
@@ -233,7 +254,12 @@ button {
 .dark-btn:hover {
   background-color: hsl(0 0 100%);
   color: hsl(0 0 5%);
-  /* box-shadow: inset 0 0 0 2px hsl(0 0 25%); */
+}
+
+.action-buttons .dark-btn:hover {
+  background-color: hsl(0 0 70%);
+  color: hsl(0 0 5%);
+  border: 2px solid transparent;
 }
 
 .dark-btn:disabled {
@@ -329,7 +355,7 @@ button {
 
 .shop {
   display: flex;
-  gap: 2rem;
+  gap: 0.5rem;
   align-items: flex-start;
 }
 
@@ -390,6 +416,7 @@ ul {
 }
 
 .product {
+  flex-grow: 1;
   margin-top: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -444,15 +471,15 @@ ul {
   font-weight: bold;
 }
 
-.buy-buttons {
+.action-buttons {
   margin-top: 1rem;
   display: grid;
   gap: 1rem;
-  grid-auto-flow: row;
-  padding-inline: 10rem;
+  grid-auto-flow: column;
+  grid-template-rows: 1fr 1fr;
 }
 
-.buy-buttons button {
+.action-buttons button {
   padding-block: 0.85rem;
 }
 
@@ -466,21 +493,31 @@ ul {
   margin-block: 1rem;
 }
 
-.product .info table {
-  margin-top: 1rem;
+.product table {
+  margin-top: 2rem;
+  width: 100%;
 }
 
-table {
-  width: fit-content;
+.product tbody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-tr {
+.product tr {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  box-shadow: var(--shadow);
+  border-radius: 0.75rem;
+  padding: 0.5rem 1.5rem;
 }
 
-td {
+.product tr:hover {
+  box-shadow: var(--hover-shadow);
+}
+
+.product td {
   padding: 1rem;
   vertical-align: middle;
 }
@@ -510,10 +547,16 @@ td {
   color: transparent;
   background-clip: text;
   font-size: 1.3rem;
+  width: fit-content;
 }
 
 .info {
-  padding: 1rem;
+  padding: 1rem 1rem 1.75rem;
+}
+
+.info .description {
+  font-weight: 300;
+  text-align: justify;
 }
 
 .reviews {
@@ -528,7 +571,7 @@ td {
   gap: 0.25rem;
   box-shadow: var(--shadow);
   padding: 1.5rem;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
 }
 
 .review:hover {
@@ -540,6 +583,10 @@ td {
   justify-content: space-between;
 }
 
-.review-title * {
-  margin: 0;
+.review-title h3 {
+  font-weight: 600;
+}
+
+.review-title p {
+  font-weight: 300;
 }

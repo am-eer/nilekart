@@ -1,10 +1,10 @@
 import { useState, useContext, createContext } from "react";
 
-const initialContextValue = [[],()=>{}];
+const initialContextValue = [new Map(),()=>{}];
 const CartContext = createContext(initialContextValue);
 
 const CartProvider = ({children}) => {
-  const cartState = useState([]);
+  const cartState = useState(new Map());
 
   return (
     <CartContext value={cartState}>

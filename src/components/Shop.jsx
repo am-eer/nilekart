@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, Outlet, useLocation } from "react-router";
 import { getCategories } from "../lib/requests";
+import { WishlistProvider } from "../lib/WishlistContext";
 
 const Shop = () => {
   const [categories, setCategories] = useState([]);
@@ -32,7 +33,9 @@ const Shop = () => {
           </aside>
         )
       }
-      <Outlet />
+      <WishlistProvider>
+        <Outlet />
+      </WishlistProvider>
     </div>
   );
 };
