@@ -11,6 +11,8 @@ const Product = () => {
   const [wishlist, setWishlist] = useWishlist();
   const [product, setProduct] = useState(null);
   const [imageNo, setImageNo] = useState(0);
+  const [shareBtnTimeoutId, setShareBtnTimeoutId] = useState(null);
+  const [isLinkCopied, setIsLinkCopied] = useState(false);
 
   useEffect(() => {
     getFullProduct(productId).then((fetchedProduct) => {
@@ -126,7 +128,18 @@ const Product = () => {
               ? "Remove from Wishlist"
               : "Add to Wishlist"}
           </button>
-          <button className="light-btn">Copy Link</button>
+          <button 
+          onClick={async () => {
+            try {
+              await navigator.clipboard.writeText(window.location.href);
+              clearTimeout(shareBtnTimeoutId);
+              setShareBtnTimeoutId(setTimeout(() => {setIsLinkCopied(false)}, 2000));
+              setIsLinkCopied(true);
+            } catch {
+              console.error("Could not copy link to clipboard");
+            }
+          }}
+          className="light-btn">{isLinkCopied ? "Link Copied" : "Share"}</button>
         </div>
       </div>
       <div className="info">

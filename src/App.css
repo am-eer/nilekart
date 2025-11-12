@@ -477,6 +477,7 @@ ul {
   gap: 1rem;
   grid-auto-flow: column;
   grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 .action-buttons button {
