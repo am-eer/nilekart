@@ -1,5 +1,6 @@
 import { useState, useContext, createContext } from "react";
 
+// Map<productId: Number, productCount: Number>
 const initialContextValue = [new Map(),()=>{}];
 const CartContext = createContext(initialContextValue);
 
@@ -18,7 +19,7 @@ const useCart = () => {
   if(context === initialContextValue) {
     console.warn("Context used outside provider");
   }
-  console.log(context);
+  // console.log(context);
   return context;
 };
 

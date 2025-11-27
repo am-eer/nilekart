@@ -18,7 +18,6 @@ const useWishlist = () => {
   if(context === initialContextValue) {
     console.warn("Context used outside provider");
   }
-  console.log(context);
   return context;
 };
 

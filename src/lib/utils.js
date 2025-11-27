@@ -29,3 +29,23 @@ export const formatDate = (unformattedDate) => {
   const year = date.getFullYear();
   return `${day}${suffix} ${month} ${year}`;
 }
+
+export const initTheme = () => {
+  return "light";
+  // const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+  // if(prefersDarkScheme.matches) {
+  //   return "dark";
+  // } else {
+  //   return "light";
+  // }
+}
+
+export const limitToRange = (value, rangeStart, rangeEnd) => {
+  if(value < rangeStart) {
+    return rangeStart;
+  } else if(rangeEnd < value) {
+    return rangeEnd;
+  } else {
+    return value;
+  }
+}

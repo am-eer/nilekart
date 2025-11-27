@@ -1,7 +1,107 @@
 :root {
+  --infinite: 999px;
+  --red: hsl(0, 100%, 60%);
+  --dark-red: hsl(0, 100%, 45%);
+
+  /* light mode */
+  --color: hsl(0 0 5%);
+  --bg-color: hsl(0 0 100%);
+  --drop-shadow-color: hsl(0 0 0 / 30%);
+  --empty-msg-color: hsl(0 0 60%);
+  --striked-price-color: hsl(0 0 40%);
+  --tile-bg: white;
+  --tile-stock-msg-color: var(--red);
+  --product-stock-msg-color: var(--red);
   --shadow: inset 0 1px 2px #ffffff50, 0 -1px #00000010, 0 1px 2px #00000030, 0 4px 8px #00000015;
   --hover-shadow: inset 0 1px 2px #ffffff50, 0 -1px #00000010, 0 1px 3px #00000037, 0 4px 12px #00000020;
-  --infinite: 999px;
+  --active-inset-shadow: inset 1px 1px 3px gray;
+  --faint-border: 1px solid hsl(0 0 92%);
+  --nav-bg: white;
+  --nav-shadow: 0 4px 8px #00000015;
+  --nav-underline-color: hsl(0 0 15%);
+  --nav-logo-icon-filter: none;
+  --nav-input-border: 2px solid hsl(0 0 40%);
+  --nav-input-focus-border: 2px solid hsl(0 0 5%);
+  --nav-form-btn-bg: white;
+  --cart-count-bg-color: hsl(0, 0%, 5%);
+  --cart-count-color: hsl(0 0 95%);
+  --footer-shadow: 0 -1px #00000025;
+  --unpolar-btn-border: 2px solid hsl(0 0 5%);
+  --unpolar-btn-bg-color: hsl(0 0 98%);
+  --unpolar-btn-color: hsl(0 0 5%);
+  --unpolar-btn-hover-border: 2px solid transparent;
+  --unpolar-btn-hover-bg-color: hsl(0 0 30%);
+  --unpolar-btn-hover-color: hsl(0 0 100%);
+  --polar-btn-border: 2px solid hsl(0 0 5%);
+  --polar-btn-bg-color: hsl(0 0 5%);
+  --polar-btn-color: hsl(0 0 95%);
+  --polar-btn-hover-bg-color: hsl(0 0 100%);
+  --polar-btn-hover-color: hsl(0 0 5%);
+  --action-polar-btn-hover-border: 2px solid transparent;
+  --action-polar-btn-hover-bg-color: hsl(0 0 70%);
+  --action-polar-btn-hover-color: hsl(0 0 5%);
+  --polar-btn-disabled-bg-color: hsl(0 0 25%);
+  --category-btn-color: hsl(0, 0%, 30%);
+  --category-btn-bg: white;
+  --category-btn-active-shadow: inset 1px 1px 3px gray;
+  --shop-aside-border-right: 1px solid hsl(0 0 90%);
+  --category-card-bg: white;
+  --category-card-active-shadow: inset 1px 1px 3px gray;
+  --product-pg-discount-color: var(--red);
+  --product-pg-disabled-btn-color: hsl(0 0 95%);
+  --info-icon-bg-color: #00000020;
+  --info-heading-color: #00000070;
+}
+
+.dark {
+  /* dark mode */
+  --color: hsl(0 0 95%);
+  --bg-color: hsl(0 0 5%);
+  --drop-shadow-color: hsl(0 0 100% / 15%);
+  --empty-msg-color: hsl(0 0 60%);
+  --striked-price-color: hsl(0 0 50%);
+  --tile-bg: hsl(0 0 7%);
+  --tile-stock-msg-color: var(--red);
+  --product-stock-msg-color: var(--red);
+  --shadow: 0 0 1px hsl(0 0 95% / 60%);
+  --hover-shadow: 0 0 2px hsl(0 0 95% / 100%);
+  --active-inset-shadow: inset 1px 1px 3px gray;
+  --faint-border: 1px solid hsl(0 0 8%);
+  --nav-bg: hsl(0 0 8%);
+  --nav-shadow: 0 2px 0 #ffffff15;
+  --nav-underline-color: hsl(0 0 85%);
+  --nav-logo-icon-filter: invert(1);
+  --nav-input-border: 2px solid hsl(0 0 80%);
+  --nav-input-focus-border: 2px solid hsl(0 0 95%);
+  --nav-form-btn-bg: transparent;
+  --cart-count-bg-color: hsl(0, 0%, 95%);
+  --cart-count-color: hsl(0 0 5%);
+  --footer-shadow: 0 -1px #ffffff25;
+  --unpolar-btn-border: 2px solid hsl(0 0 95%);
+  --unpolar-btn-bg-color: hsl(0 0 2%);
+  --unpolar-btn-color: hsl(0 0 95%);
+  --unpolar-btn-hover-border: 2px solid transparent;
+  --unpolar-btn-hover-bg-color: hsl(0 0 70%);
+  --unpolar-btn-hover-color: hsl(0 0 2%);
+  --polar-btn-border: 2px solid hsl(0 0 95%);
+  --polar-btn-bg-color: hsl(0 0 95%);
+  --polar-btn-color: hsl(0 0 5%);
+  --polar-btn-hover-bg-color: hsl(0 0 5%);
+  --polar-btn-hover-color: hsl(0 0 95%);
+  --action-polar-btn-hover-border: 2px solid transparent;
+  --action-polar-btn-hover-bg-color: hsl(0 0 30%);
+  --action-polar-btn-hover-color: hsl(0 0 95%);
+  --polar-btn-disabled-bg-color: hsl(0 0 50%);
+  --category-btn-color: hsl(0, 0%, 70%);
+  --category-btn-bg: hsl(0 0 7%);
+  --category-btn-active-shadow: inset 1px 1px 3px gray;
+  --shop-aside-border-right: 1px solid hsl(0 0 12%);
+  --category-card-bg: hsl(0 0 7%);
+  --category-card-active-shadow: inset 1px 1px 3px gray;
+  --product-pg-discount-color: var(--red);
+  --product-pg-disabled-btn-color: hsl(0 0 95%);
+  --info-icon-bg-color: #ffffff20;
+  --info-heading-color: #ffffff70;
 }
 
 * {
@@ -22,6 +122,8 @@ html {
 body {
   font-family: Inter, Helvetica, sans-serif;
   font-optical-sizing: auto;
+  color: var(--color);
+  background-color: var(--bg-color);
 }
 
 #root {

@@ -3,16 +3,19 @@ import { useParams } from "react-router";
 import { getFullProduct } from "../lib/requests";
 import { formatCategory } from "../lib/utils";
 import { useWishlist } from "../lib/WishlistContext";
+import { useCart } from "../lib/CartContext";
 import Stars from "./Stars";
 import Review from "./Review";
 
 const Product = () => {
-  const { productId } = useParams();
+  const { productId: productIdString } = useParams();
+  const productId = Number(productIdString);
+  const [cart, setCart] = useCart();
   const [wishlist, setWishlist] = useWishlist();
-  const [product, setProduct] = useState(null);
   const [imageNo, setImageNo] = useState(0);
   const [shareBtnTimeoutId, setShareBtnTimeoutId] = useState(null);
   const [isLinkCopied, setIsLinkCopied] = useState(false);
+  const [product, setProduct] = useState(null);
 
   useEffect(() => {
     getFullProduct(productId).then((fetchedProduct) => {
@@ -30,7 +33,7 @@ const Product = () => {
             setImageNo((imageNo) => imageNo - 1);
             console.log(imageNo);
           }}
-          className="dark-btn rotate"
+          className="polar-btn rotate"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +58,7 @@ const Product = () => {
             setImageNo((imageNo) => imageNo + 1);
             console.log(imageNo);
           }}
-          className="dark-btn"
+          className="polar-btn"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -111,8 +114,21 @@ const Product = () => {
           )}
         </div>
         <div className="action-buttons">
-          <button className="dark-btn">Add to Cart</button>
-          <button className="dark-btn">Buy Now</button>
+          <button
+            disabled={!cart.has(productId) && cart.size >= 8} 
+            onClick={() => {
+              const tempCart = new Map(cart);
+              cart.has(productId)
+                ? tempCart.delete(productId)
+                : tempCart.set(productId, 1);
+              setCart(tempCart);
+            }}
+            className="polar-btn">{cart.has(productId)
+              ? "Remove from Cart"
+              : cart.size >= 8 
+              ? "Cart is full" 
+              : "Add to Cart"}</button>
+          <button className="polar-btn">Buy Now</button>
           <button
             disabled={!wishlist.has(productId) && wishlist.size >= 12}
             onClick={() => {
@@ -122,10 +138,12 @@ const Product = () => {
                 : tempWishlist.add(productId);
               setWishlist(tempWishlist);
             }}
-            className="light-btn"
+            className="unpolar-btn"
           >
             {wishlist.has(productId)
               ? "Remove from Wishlist"
+              : wishlist.size >= 12 
+              ? "Wishlist is full" 
               : "Add to Wishlist"}
           </button>
           <button 
@@ -139,7 +157,7 @@ const Product = () => {
               console.error("Could not copy link to clipboard");
             }
           }}
-          className="light-btn">{isLinkCopied ? "Link Copied" : "Share"}</button>
+          className="unpolar-btn">{isLinkCopied ? "Link Copied" : "Share"}</button>
         </div>
       </div>
       <div className="info">

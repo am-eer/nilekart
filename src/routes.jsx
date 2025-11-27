@@ -14,7 +14,6 @@ const routes = [
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <Home /> },
-      { path: "cart/", element: <Cart /> },
       {
         path: "shop/",
         element: <Shop />,
@@ -24,6 +23,7 @@ const routes = [
           { path: "categories/:category/:pg", element: <Category /> },
           { path: "search/:query/:pg", element: <Category /> },
           { path: "wishlist", element: <Category /> },
+          { path: "cart/", element: <Cart /> },
           { path: "product/:productId", element: <Product /> },
         ]
       },

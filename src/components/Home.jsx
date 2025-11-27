@@ -33,7 +33,7 @@ const Home = () => {
             <p className="highlight-small">Categories</p>
           </div>
         </div>
-        <Link to="shop"><button className="dark-btn large-btn">Start Shopping</button></Link>
+        <Link to="shop"><button className="polar-btn large-btn">Start Shopping</button></Link>
       </section>
       {/* <section className="home-section dummy">
         <span>Stats</span>

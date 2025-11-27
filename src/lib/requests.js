@@ -83,21 +83,25 @@ export const getWishlist = async (wishlist) => {
   return products;
 };
 
-// export const getWishlist = (wishlist, setProducts) => {
-//   const products = [];
-//   wishlist.forEach((productId) => {
-//     try {
-//     fetch(`${API_PREFIX}/${productId}?select=title,price,discountPercentage,rating,stock,thumbnail`).then((response) => response.json()).then((payload) => {
-//       products.push(payload);
-//       if(products.length === wishlist.size) setProducts(products);
-//     });
-//   } catch (err) {
-//     console.error("Failed to get wishlist item", err);
-//     return null;
-//   }
-//   });
-//   return products;
-// };
+export const getCart = async (cart) => {
+  const promises = [];
+  for(const [productId, quantity] of cart) {
+    const fetcher = async () => {
+      try {
+        const response = await fetch(`${API_PREFIX}/${productId}?select=title,price,discountPercentage,stock,thumbnail`);
+        const payload = await response.json();
+        return payload;
+      } catch (err) {
+        console.error("Failed to get cart item", err);
+        return null;
+      }
+    }
+    promises.push(fetcher());
+  }
+  const resolvedValues = await Promise.all(promises);
+  const products = resolvedValues.filter((product) => product !== null);
+  return products;
+};
 
 export const getFullProduct = async (productId) => {
   try {
