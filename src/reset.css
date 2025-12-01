@@ -44,11 +44,8 @@ h6 {
   text-wrap: balance;
 }
 
-/* improve readability with max-width on paragraphs and lists */
-/* prevent orphans in supported browsers */
 p,
 li {
-  max-width: var(--p-max-width, 65ch);
   text-wrap: pretty;
 }
 

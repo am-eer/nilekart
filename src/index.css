@@ -5,6 +5,7 @@
 
   /* light mode */
   --color: hsl(0 0 5%);
+  --faint-color: hsl(0 0 15%);
   --bg-color: hsl(0 0 100%);
   --drop-shadow-color: hsl(0 0 0 / 30%);
   --empty-msg-color: hsl(0 0 60%);
@@ -56,6 +57,7 @@
 .dark {
   /* dark mode */
   --color: hsl(0 0 95%);
+  --faint-color: hsl(0 0 80%);
   --bg-color: hsl(0 0 5%);
   --drop-shadow-color: hsl(0 0 100% / 15%);
   --empty-msg-color: hsl(0 0 60%);
@@ -102,35 +104,4 @@
   --product-pg-disabled-btn-color: hsl(0 0 95%);
   --info-icon-bg-color: #ffffff20;
   --info-heading-color: #ffffff70;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html, body, #root {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-html {
-  overflow: overlay;
-  scrollbar-gutter: stable;
-}
-
-body {
-  font-family: Inter, Helvetica, sans-serif;
-  font-optical-sizing: auto;
-  color: var(--color);
-  background-color: var(--bg-color);
-}
-
-#root {
-  display: flex;
-  flex-direction: column;
-}
-
-button, ul, li {
-  font-size: inherit;
 }

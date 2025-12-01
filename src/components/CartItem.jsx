@@ -55,7 +55,7 @@ const CartItem = ({ product, cart, setCart }) => {
         <img src={product.thumbnail} alt="Product Image" />
       </Link>
       <Link to={`../product/${product.id}`} className="cart-item-title">{product.title}</Link>
-      <p className="cart-item-price">${finalPrice.toFixed(2)}</p>
+      <p className="cart-item-price">Rate: ${finalPrice.toFixed(2)}</p>
       <div className="count-editor">
         <button
           className={`unpolar-btn ${cart.get(product.id) <= 1 ? "decrement-btn" : ""}`}
@@ -64,7 +64,7 @@ const CartItem = ({ product, cart, setCart }) => {
               const tempCart = new Map(cart);
               const newQuantity = cart.get(product.id) - 1;
               if (newQuantity >= 1) {
-                tempCart.set(product.id, limitToRange(newQuantity, 1, 10));
+                tempCart.set(product.id, limitToRange(newQuantity, 1, Math.min(10, product.stock)));
               } else {
                 tempCart.delete(product.id);
               }
@@ -76,13 +76,13 @@ const CartItem = ({ product, cart, setCart }) => {
         </button>
         <div className="cart-item-count">{cart.get(product.id)}</div>
         <button
-          disabled={cart.get(product.id) >= 10}
+          disabled={cart.get(product.id) >= Math.min(10, product.stock)}
           className="unpolar-btn"
           onClick={() => {
             setCart((cart) => {
               const tempCart = new Map(cart);
               const newQuantity = cart.get(product.id) + 1;
-              tempCart.set(product.id, limitToRange(newQuantity, 1, 10));
+              tempCart.set(product.id, limitToRange(newQuantity, 1, Math.min(10, product.stock)));
               return tempCart;
             });
           }}

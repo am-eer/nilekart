@@ -15,7 +15,10 @@ const ShopIndex = () => {
     <main className="shop-main">
       {showcase.map((section, index) => (
         <div key={index} className="category-showcase">
-          <h1 className="center">{section.category.name}</h1>
+          <div className="title-container">
+            <h1 className="center">{section.category.name}</h1>
+            <CategoryButton categorySlug={section.category.slug} />
+          </div>
           <div className="product-showcase-box">
             <div className="product-showcase">
               {section.products.map((product, idx) => (

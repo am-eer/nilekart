@@ -38,7 +38,7 @@ const Category = () => {
 
   return (
     <main className="shop-main">
-      <h1 className="shop-main-heading">{query ? "Search Results" : category ? formatCategory(category) : "Wishlist"}</h1>
+      <h1 className="shop-main-heading">{query ? `Search Results for "${query}"` : category ? formatCategory(category) : "Wishlist"}</h1>
       <div className="tile-grid">
         {0 < products.length ?
           (
